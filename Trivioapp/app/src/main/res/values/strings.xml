@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Trivio-app</string>
+
+    <!-- Array for Number of Questions Spinner -->
+    <string-array name="number_of_questions_array">
+        <item>Select a number</item> <!-- Placeholder -->
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+    </string-array>
+
+    <!-- Array for Topics Spinner -->
+    <string-array name="topics_array">
+        <item>Select a topic</item>
+        <item>General Knowledge</item>
+        <item>Entertainment: Books</item>
+        <item>Entertainment: Film</item>
+        <item>Entertainment: Music</item>
+        <item>Entertainment: Television</item>
+        <item>Entertainment: Video Games</item>
+        <item>Entertainment: Board Games</item>
+        <item>Science: Computers</item>
+        <item>Science: Mathematics</item>
+        <item>Mythology</item>
+        <item>Sports</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Politics</item>
+        <item>Art</item>
+        <item>Celebrities</item>
+        <item>Animals</item>
+        <item>Vehicles</item>
+    </string-array>
+</resources>

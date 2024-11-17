@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F6F6F6"
+    android:layout_marginBottom="8dp">
+
+    <!-- Question Text -->
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question:"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <!-- User's Answer -->
+    <TextView
+        android:id="@+id/tv_user_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Answer:"
+        android:layout_marginTop="4dp"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <!-- Correct Answer Indicator -->
+    <TextView
+        android:id="@+id/tv_correct_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Correct Answer:"
+        android:layout_marginTop="4dp"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <!-- Timestamp -->
+    <TextView
+        android:id="@+id/tv_response_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date: "
+        android:layout_marginTop="4dp"
+        android:textColor="#707070"
+        android:textSize="12sp" />
+</LinearLayout>
