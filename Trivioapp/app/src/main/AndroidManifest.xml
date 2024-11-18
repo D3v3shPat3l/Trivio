@@ -15,9 +15,6 @@
         android:theme="@style/Theme.AppCompat.Light"
         tools:targetApi="31">
 
-        <!-- Register ReminderBroadcastReceiver here -->
-        <receiver android:name=".ReminderBroadcastReceiver" />
-
         <!-- LoginActivity is the entry point of the app -->
         <activity
             android:name=".LoginActivity"
@@ -59,12 +56,23 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
 
-        <!-- Declare SettingsActivity -->
+        <!-- Declare PastResponsesActivity -->
         <activity
             android:name=".PastResponsesActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
 
+        <!-- Declare LeaderboardActivity -->
+        <activity
+            android:name=".LeaderboardActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
+
+        <!-- Declare AchievementsActivity -->
+        <activity
+            android:name=".AchievementsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light" />
     </application>
 
 </manifest>

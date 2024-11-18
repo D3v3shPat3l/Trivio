@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnLeaderboard.setOnClickListener {
+            startActivity(Intent(this, LeaderboardActivity::class.java))
         }
 
         btnPast.setOnClickListener {
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnAchievements.setOnClickListener {
+            startActivity(Intent(this, AchievementsActivity::class.java))
         }
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)

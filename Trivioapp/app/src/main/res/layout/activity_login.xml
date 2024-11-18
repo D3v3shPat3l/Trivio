@@ -77,7 +77,7 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:backgroundTint="#2EA8B1"
+        android:backgroundTint="#0cc0df"
         app:layout_constraintTop_toBottomOf="@+id/btn_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

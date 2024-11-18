@@ -114,6 +114,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:backgroundTint="#6A0DAD"
+                    android:textStyle="bold"
                     android:text="Save"
                     android:textColor="#FFFFFF" />
 
@@ -123,7 +124,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#2EA8B1"
+                    android:backgroundTint="#0cc0df"
+                    android:textStyle="bold"
                     android:text="Cancel"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
@@ -134,6 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:textStyle="bold"
                 android:backgroundTint="#FF0000"
                 android:text="Logout"
                 android:textColor="#FFFFFF" />

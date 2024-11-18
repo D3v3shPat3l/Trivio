@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F6C1EC"
-    tools:context=".PastResponsesActivity">
+    tools:context=".LeaderboardActivity">
 
     <!-- Logo Image -->
     <ImageView
@@ -20,12 +20,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="App Logo" />
 
-    <!-- Title for Past Responses -->
+    <!-- Title for Leaderboard -->
     <TextView
-        android:id="@+id/tv_past_responses_title"
+        android:id="@+id/tv_leaderboard_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Past Responses"
+        android:text="Leaderboard"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -34,43 +34,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="-40dp" />
 
-    <!-- Progress Bar -->
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginHorizontal="16dp"
-        android:progress="0"
-        android:max="100"
-        android:progressTint="#6A0DAD"
-        android:backgroundTint="#E0E0E0"
-        app:layout_constraintTop_toBottomOf="@id/tv_past_responses_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-    <!-- Progress Percentage Text -->
-    <TextView
-        android:id="@+id/tv_progress_percentage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="0%"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/progress_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- RecyclerView to show Past Responses -->
+    <!-- RecyclerView to show Leaderboard Entries -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_past_responses"
+        android:id="@+id/recycler_leaderboard"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_progress_percentage"
+        app:layout_constraintTop_toBottomOf="@id/tv_leaderboard_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView" />
@@ -85,5 +55,4 @@
         android:background="@android:color/black"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

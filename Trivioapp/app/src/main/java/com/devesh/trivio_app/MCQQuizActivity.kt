@@ -29,9 +29,7 @@ class MCQQuizActivity : AppCompatActivity() {
         setContentView(R.layout.activity_mcq)
 
         quizId = System.currentTimeMillis().toString()
-
         totalQuestions = intent.getIntExtra("NUMBER_OF_QUESTIONS", 0)
-
         val categoryId = intent.getIntExtra("CATEGORY_ID", 9)
 
         val questionText = findViewById<TextView>(R.id.tv_question_mcq)
@@ -59,7 +57,10 @@ class MCQQuizActivity : AppCompatActivity() {
                     startActivity(Intent(this, MainActivity::class.java))
                     true
                 }
-                R.id.action_quiz -> true
+                R.id.action_quiz -> {
+                    startActivity(Intent(this, QuizMeOptionsActivity::class.java))
+                    true
+                }
                 R.id.action_settings -> {
                     startActivity(Intent(this, SettingsActivity::class.java))
                     true
@@ -140,19 +141,21 @@ class MCQQuizActivity : AppCompatActivity() {
         val correctAnswer = currentQuestion.correct_answer
         val isCorrect = selectedAnswer == correctAnswer
 
-        saveQuizResponse(
-            quizId = quizId,
-            questionId = currentQuestionIndex.toString(),
-            answer = selectedAnswer,
-            isCorrect = isCorrect
-        )
-
+        // Increment the score if the answer is correct
         if (isCorrect) {
             score++
             Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this, "Incorrect. The correct answer was: $correctAnswer", Toast.LENGTH_SHORT).show()
         }
+
+        // Save the quiz response and update leaderboard
+        saveQuizResponse(
+            quizId = quizId,
+            questionId = currentQuestionIndex.toString(),
+            answer = selectedAnswer,
+            isCorrect = isCorrect
+        )
 
         showNextQuestion()
     }
@@ -189,6 +192,10 @@ class MCQQuizActivity : AppCompatActivity() {
 
     private fun saveQuizResponse(quizId: String, questionId: String, answer: String, isCorrect: Boolean) {
         val questionText = questionList[currentQuestionIndex].question
+
+        // Extract username from email
+        val username = currentUser?.email?.substringBefore("@") ?: "Anonymous"
+
         val response = hashMapOf(
             "userId" to currentUser?.uid,
             "quizId" to quizId,
@@ -196,11 +203,44 @@ class MCQQuizActivity : AppCompatActivity() {
             "questionText" to questionText,
             "answer" to answer,
             "isCorrect" to isCorrect,
-            "timestamp" to System.currentTimeMillis()
+            "timestamp" to System.currentTimeMillis(),
+            "score" to score // Save the score here
         )
 
         db.collection("quizResponses").add(response)
             .addOnSuccessListener { Log.d("Firestore", "Quiz response saved successfully!") }
             .addOnFailureListener { e -> Log.w("Firestore", "Error saving quiz response", e) }
+
+        // Update leaderboard
+        updateLeaderboard(score, username)
+    }
+
+    private fun updateLeaderboard(score: Int, username: String) {
+        val userRef = db.collection("leaderboard").document(currentUser?.uid ?: return)
+
+        userRef.get().addOnSuccessListener { document ->
+            if (document.exists()) {
+                val currentScore = document.getLong("score")?.toInt() ?: 0
+                val newScore = currentScore + score
+
+                // Update leaderboard with new score
+                userRef.update("score", newScore, "username", username)
+                    .addOnSuccessListener {
+                        Log.d("Firestore", "Leaderboard updated successfully")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("Firestore", "Error updating leaderboard", e)
+                    }
+            } else {
+                // User is not in leaderboard yet, create new entry
+                userRef.set(hashMapOf("score" to score, "username" to username))
+                    .addOnSuccessListener {
+                        Log.d("Firestore", "New leaderboard entry created")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("Firestore", "Error adding leaderboard entry", e)
+                    }
+            }
+        }
     }
 }

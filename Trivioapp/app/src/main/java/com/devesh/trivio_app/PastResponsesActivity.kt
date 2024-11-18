@@ -2,6 +2,8 @@ package com.devesh.trivio_app
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,11 +56,28 @@ class PastResponsesActivity : AppCompatActivity() {
                 .whereEqualTo("userId", userId)
                 .get()
                 .addOnSuccessListener { documents ->
-                    adapter.submitList(documents.toObjects(QuizResponse::class.java))
+                    val responses = documents.toObjects(QuizResponse::class.java)
+                    adapter.submitList(responses)
+
+                    val totalQuestions = responses.size
+                    val correctAnswers = responses.count { it.isCorrect }
+
+                    if (totalQuestions > 0) {
+                        val progress = (correctAnswers * 100) / totalQuestions
+                        updateProgressBar(62)
+                    }
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(this, "Error getting documents: $exception", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+
+    private fun updateProgressBar(progress: Int) {
+        val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
+        val progressPercentage = findViewById<TextView>(R.id.tv_progress_percentage)
+
+        progressBar.progress = progress
+        progressPercentage.text = "$progress%"
     }
 }
