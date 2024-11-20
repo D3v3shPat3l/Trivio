@@ -13,6 +13,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.text.Html
+import android.os.Build
 
 class MCQQuizActivity : AppCompatActivity() {
 
@@ -26,6 +28,7 @@ class MCQQuizActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_mcq)
 
         quizId = System.currentTimeMillis().toString()
@@ -112,6 +115,14 @@ class MCQQuizActivity : AppCompatActivity() {
         })
     }
 
+    fun String.decodeHtml(): String {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(this, Html.FROM_HTML_MODE_LEGACY).toString()
+        } else {
+            Html.fromHtml(this).toString()
+        }
+    }
+
     private fun updateQuestionUI() {
         val questionText = findViewById<TextView>(R.id.tv_question_mcq)
         val questionNumberText = findViewById<TextView>(R.id.tv_question_number)
@@ -123,16 +134,16 @@ class MCQQuizActivity : AppCompatActivity() {
         if (currentQuestionIndex < totalQuestions) {
             questionNumberText.text = "${currentQuestionIndex + 1}/$totalQuestions"
             val currentQuestion = questionList[currentQuestionIndex]
-            questionText.text = currentQuestion.question
+            questionText.text = currentQuestion.question.decodeHtml()
 
             val options = currentQuestion.incorrect_answers.toMutableList()
             options.add(currentQuestion.correct_answer)
             options.shuffle()
 
-            option1Button.text = options[0]
-            option2Button.text = options[1]
-            option3Button.text = options[2]
-            option4Button.text = options[3]
+            option1Button.text = options[0].decodeHtml()
+            option2Button.text = options[1].decodeHtml()
+            option3Button.text = options[2].decodeHtml()
+            option4Button.text = options[3].decodeHtml()
         }
     }
 
@@ -191,7 +202,7 @@ class MCQQuizActivity : AppCompatActivity() {
     }
 
     private fun saveQuizResponse(quizId: String, questionId: String, answer: String, isCorrect: Boolean) {
-        val questionText = questionList[currentQuestionIndex].question
+        val questionText = questionList[currentQuestionIndex].question.decodeHtml()
 
         // Extract username from email
         val username = currentUser?.email?.substringBefore("@") ?: "Anonymous"

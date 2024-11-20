@@ -18,6 +18,7 @@ class LeaderboardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_leaderboard)
 
         recyclerView = findViewById(R.id.recycler_leaderboard)

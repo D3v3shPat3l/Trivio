@@ -22,6 +22,7 @@ class PastResponsesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_past_responses)
 
         rvPastResponses = findViewById(R.id.rv_past_responses)
@@ -64,7 +65,7 @@ class PastResponsesActivity : AppCompatActivity() {
 
                     if (totalQuestions > 0) {
                         val progress = (correctAnswers * 100) / totalQuestions
-                        updateProgressBar(62)
+                        updateProgressBar(progress)
                     }
                 }
                 .addOnFailureListener { exception ->

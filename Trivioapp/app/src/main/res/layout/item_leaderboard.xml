@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#F6F6F6"
+    android:background="#F6C1EC"
     android:layout_marginBottom="8dp">
 
     <!-- User Name -->

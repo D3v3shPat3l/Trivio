@@ -13,6 +13,8 @@ import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.text.Html
+import android.os.Build
 
 class TFQuizActivity : AppCompatActivity() {
 
@@ -26,6 +28,7 @@ class TFQuizActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_torf)
 
         quizId = System.currentTimeMillis().toString()
@@ -106,13 +109,21 @@ class TFQuizActivity : AppCompatActivity() {
         })
     }
 
+    fun String.decodeHtml(): String {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(this, Html.FROM_HTML_MODE_LEGACY).toString()
+        } else {
+            Html.fromHtml(this).toString()
+        }
+    }
+
     private fun updateQuestionUI() {
         val questionText = findViewById<TextView>(R.id.tv_question_tf)
         val questionNumberText = findViewById<TextView>(R.id.tv_question_number)
 
         if (currentQuestionIndex < totalQuestions) {
             questionNumberText.text = "${currentQuestionIndex + 1}/$totalQuestions"
-            questionText.text = questionList[currentQuestionIndex].question
+            questionText.text = questionList[currentQuestionIndex].question.decodeHtml()
         }
     }
 
@@ -174,7 +185,7 @@ class TFQuizActivity : AppCompatActivity() {
     }
 
     private fun saveQuizResponse(quizId: String, questionId: String, answer: String, isCorrect: Boolean, score: Int) {
-        val questionText = questionList[currentQuestionIndex].question
+        val questionText = questionList[currentQuestionIndex].question.decodeHtml()
         val username = currentUser?.email?.substringBefore("@") ?: "Anonymous"
         val response: Map<String, Any> = hashMapOf(
             "userId" to (currentUser?.uid ?: ""),
