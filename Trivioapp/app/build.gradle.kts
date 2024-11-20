@@ -58,6 +58,7 @@ dependencies {
     implementation ("com.google.firebase:firebase-firestore:24.2.0")
     implementation ("androidx.work:work-runtime-ktx:2.8.0")
     implementation ("androidx.core:core-ktx:1.9.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation(libs.firebase.auth.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

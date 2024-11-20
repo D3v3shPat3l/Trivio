@@ -169,88 +169,70 @@ class QuizMeOptionsActivity : AppCompatActivity() {
             val userRef = db.collection("users").document(userId)
 
             userRef.get().addOnSuccessListener { document ->
+                val currentPressCount: Long
                 if (document.exists()) {
-                    val currentPressCount = document.getLong("pressCount") ?: 0
-                    val newPressCount = currentPressCount + 1
+                    currentPressCount = document.getLong("pressCount") ?: 0
+                } else {
+                    currentPressCount = 0
+                }
 
-                    val achievements = mutableMapOf<String, Map<String, Any>>()
-                    val unlockedAchievements = mutableListOf<String>()
+                val newPressCount = currentPressCount + 1
 
-                    achievements["First Quiz"] = mapOf(
-                        "unlocked" to (newPressCount >= 1),
-                        "description" to "Complete your first quiz!"
-                    )
-                    achievements["Quiz Newbie"] = mapOf(
-                        "unlocked" to (newPressCount >= 5),
-                        "description" to "Complete 5 quizzes!"
-                    )
-                    achievements["Knowledge Seeker"] = mapOf(
-                        "unlocked" to (newPressCount >= 20),
-                        "description" to "Complete 20 quizzes!"
-                    )
-                    achievements["Half-Century Hero"] = mapOf(
-                        "unlocked" to (newPressCount >= 50),
-                        "description" to "Complete 50 quizzes!"
-                    )
-                    achievements["Mastermind"] = mapOf(
-                        "unlocked" to (newPressCount >= 100),
-                        "description" to "Complete 100 quizzes!"
-                    )
+                val achievements = mutableMapOf<String, Map<String, Any>>()
+                val unlockedAchievements = mutableListOf<String>()
 
-                    achievements.forEach { (achievement, details) ->
-                        val unlocked = details["unlocked"] as Boolean
-                        val previouslyUnlocked = document.get("achievements.$achievement.unlocked") as? Boolean ?: false
+                // Define achievements
+                achievements["First Quiz"] = mapOf(
+                    "unlocked" to (newPressCount >= 1),
+                    "description" to "Complete your first quiz!"
+                )
+                achievements["Quiz Newbie"] = mapOf(
+                    "unlocked" to (newPressCount >= 5),
+                    "description" to "Complete 5 quizzes!"
+                )
+                achievements["Knowledge Seeker"] = mapOf(
+                    "unlocked" to (newPressCount >= 20),
+                    "description" to "Complete 20 quizzes!"
+                )
+                achievements["Half-Century Hero"] = mapOf(
+                    "unlocked" to (newPressCount >= 50),
+                    "description" to "Complete 50 quizzes!"
+                )
+                achievements["Mastermind"] = mapOf(
+                    "unlocked" to (newPressCount >= 100),
+                    "description" to "Complete 100 quizzes!"
+                )
 
-                        if (unlocked && !previouslyUnlocked) {
-                            Toast.makeText(applicationContext, "$achievement Unlocked!", Toast.LENGTH_SHORT).show()
-                            unlockedAchievements.add(achievement)
-                        }
+                achievements.forEach { (achievement, details) ->
+                    val unlocked = details["unlocked"] as Boolean
+                    val previouslyUnlocked = document.get("achievements.$achievement.unlocked") as? Boolean ?: false
+
+                    if (unlocked && !previouslyUnlocked) {
+                        Toast.makeText(applicationContext, "$achievement Unlocked!", Toast.LENGTH_SHORT).show()
+                        unlockedAchievements.add(achievement)
                     }
+                }
 
-                    val updatedAchievements = achievements.mapValues { entry ->
-                        if (unlockedAchievements.contains(entry.key)) {
-                            entry.value + ("unlocked" to true)
-                        } else {
-                            entry.value
-                        }
+                val updatedAchievements = achievements.mapValues { entry ->
+                    if (unlockedAchievements.contains(entry.key)) {
+                        entry.value + ("unlocked" to true)
+                    } else {
+                        entry.value
                     }
+                }
 
-                    val updates = mapOf(
+                val updates = mapOf(
+                    "pressCount" to newPressCount,
+                    "achievements" to updatedAchievements
+                )
+
+                if (document.exists()) {
+                    userRef.update(updates)
+                } else {
+                    val userData = mapOf(
                         "pressCount" to newPressCount,
                         "achievements" to updatedAchievements
                     )
-
-                    userRef.update(updates)
-
-                } else {
-                    val achievements = mutableMapOf<String, Map<String, Any>>(
-                        "First Quiz" to mapOf(
-                            "unlocked" to false,
-                            "description" to "Complete your first quiz!"
-                        ),
-                        "Quiz Newbie" to mapOf(
-                            "unlocked" to false,
-                            "description" to "Complete 5 quizzes!"
-                        ),
-                        "Knowledge Seeker" to mapOf(
-                            "unlocked" to false,
-                            "description" to "Complete 20 quizzes!"
-                        ),
-                        "Half-Century Hero" to mapOf(
-                            "unlocked" to false,
-                            "description" to "Complete 50 quizzes!"
-                        ),
-                        "Mastermind" to mapOf(
-                            "unlocked" to false,
-                            "description" to "Complete 100 quizzes!"
-                        )
-                    )
-
-                    val userData = mapOf(
-                        "pressCount" to 1,
-                        "achievements" to achievements
-                    )
-
                     userRef.set(userData)
                 }
             }
