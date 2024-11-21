@@ -2,7 +2,6 @@ package com.devesh.trivio_app
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.auth.FirebaseAuth
 
+// Activity class to display past quiz responses and show user progress
 class PastResponsesActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
@@ -21,6 +21,7 @@ class PastResponsesActivity : AppCompatActivity() {
 
     private lateinit var rvPastResponses: RecyclerView
 
+    // onCreate method is called when the activity is created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -32,6 +33,7 @@ class PastResponsesActivity : AppCompatActivity() {
         rvPastResponses.adapter = adapter
         loadPastResponses()
 
+        // Bottom navigation to navigate between screens
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -55,68 +57,39 @@ class PastResponsesActivity : AppCompatActivity() {
         }
     }
 
+    // Function to load past quiz responses for the current user from Fire db
     private fun loadPastResponses() {
         currentUser?.uid?.let { userId ->
             db.collection("quizResponses")
                 .whereEqualTo("userId", userId)
                 .get()
                 .addOnSuccessListener { documents ->
-                    // Log all documents retrieved to verify the data
                     val responses = documents.toObjects(QuizResponse::class.java)
-                    Log.d("QuizResponses", "Retrieved responses: $responses")  // Log all responses
-
-                    // Submit the responses to the adapter
                     adapter.submitList(responses)
-
-                    // Check total number of questions
                     val totalQuestions = responses.size
-                    Log.d(
-                        "QuizResponses",
-                        "Total questions: $totalQuestions"
-                    )  // Log total number of questions
-
-                    // Count the correct answers
                     val correctAnswers = responses.count { it.isCorrect }
-                    Log.d(
-                        "QuizResponses",
-                        "Correct answers: $correctAnswers"
-                    )  // Log count of correct answers
-
-                    // Update the progress bar if there are any questions
                     if (totalQuestions > 0) {
                         val progress = (correctAnswers * 100) / totalQuestions
-                        Log.d(
-                            "QuizResponses",
-                            "Progress: $progress%"
-                        )  // Log the progress percentage
+
                         updateProgressBar(progress)
-                    } else {
-                        Log.d(
-                            "QuizResponses",
-                            "No questions found."
-                        )  // Log if no questions are found
                     }
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(this, "Error getting documents: $exception", Toast.LENGTH_SHORT)
                         .show()
-                    Log.e(
-                        "QuizResponses",
-                        "Error getting documents: $exception"
-                    )  // Log the error in case of failure
+
                 }
                 .addOnSuccessListener { documents ->
-                    documents.forEach { document ->
-                        Log.d("Firestore", "Document data: ${document.data}")
+                    documents.forEach { _ ->
                     }
                     val responses = documents.toObjects(QuizResponse::class.java)
                     adapter.submitList(responses)
 
                 }
-
         }
     }
 
+    // Function to update the progress bar and the percentage text with the given progress
     private fun updateProgressBar(progress: Int) {
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
         val progressPercentage = findViewById<TextView>(R.id.tv_progress_percentage)

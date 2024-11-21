@@ -17,8 +17,7 @@
         android:src="@drawable/logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="App Logo" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Title for Leaderboard -->
     <TextView
@@ -34,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="-40dp" />
 
-    <!-- RecyclerView to show Leaderboard Entries -->
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_leaderboard"
         android:layout_width="0dp"

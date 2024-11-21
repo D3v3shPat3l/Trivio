@@ -7,6 +7,7 @@
     android:padding="24dp"
     android:background="@drawable/dialog_background">
 
+    <!-- User's Score -->
     <TextView
         android:id="@+id/tv_score"
         android:layout_width="wrap_content"
@@ -16,8 +17,11 @@
         android:textStyle="bold"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:text="Your Score: 100"
+        android:contentDescription="Your current score displayed here" />
 
+    <!-- Button 1 (Play Again) -->
     <Button
         android:id="@+id/btn_play_again"
         android:layout_width="match_parent"
@@ -26,8 +30,10 @@
         android:backgroundTint="#6A0DAD"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:contentDescription="Button to play the game again" />
 
+    <!-- Button 2 (Menu) -->
     <Button
         android:id="@+id/btn_menu"
         android:layout_width="match_parent"
@@ -35,5 +41,6 @@
         android:backgroundTint="#0cc0df"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:text="Menu" />
+        android:text="Menu"
+        android:contentDescription="Button to navigate to the main menu" />
 </LinearLayout>

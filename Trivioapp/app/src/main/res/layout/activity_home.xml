@@ -31,7 +31,8 @@
         app:layout_constraintTop_toBottomOf="@id/logo_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="-40dp" />
+        android:layout_marginTop="-40dp"
+        android:contentDescription="Welcome message for the user" />
 
     <!-- Quiz Me Button -->
     <Button
@@ -47,9 +48,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_welcome"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:contentDescription="Quiz Me Button" />
 
-    <!-- Rank Button -->
+    <!-- Leaderboard Button -->
     <Button
         android:id="@+id/btn_leaderboard"
         android:layout_width="0dp"
@@ -62,9 +64,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:contentDescription="Leaderboard Button" />
 
-    <!-- Friends Button -->
+    <!-- Past Responses Button -->
     <Button
         android:id="@+id/btn_past"
         android:layout_width="0dp"
@@ -77,7 +80,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:contentDescription="Past Responses Button" />
 
     <!-- Achievements Button -->
     <Button
@@ -92,9 +96,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8"
-        android:layout_marginTop="16dp" />
-
-    <!-- Settings Button -->
+        android:layout_marginTop="16dp"
+        android:contentDescription="Achievements Button" />
 
     <!-- Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -106,5 +109,5 @@
         android:background="@android:color/black"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
-    />
+        android:contentDescription="Bottom Navigation Bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

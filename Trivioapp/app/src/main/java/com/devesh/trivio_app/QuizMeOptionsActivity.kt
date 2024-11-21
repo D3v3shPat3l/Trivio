@@ -1,6 +1,5 @@
 package com.devesh.trivio_app
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -12,9 +11,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import android.widget.Toast
 
+// Activity that handles the quiz options screen where users can configure quiz settings.
 class QuizMeOptionsActivity : AppCompatActivity() {
 
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
+    // Called when the activity is created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -25,6 +25,7 @@ class QuizMeOptionsActivity : AppCompatActivity() {
         val switchQuestionType = findViewById<Switch>(R.id.switch_question_type)
         val categorySpinner = findViewById<Spinner>(R.id.spinner_topic)
 
+        // Array of topics to choose from for the quiz
         val topics = arrayOf(
             "Select a topic",
             "General Knowledge",
@@ -47,6 +48,7 @@ class QuizMeOptionsActivity : AppCompatActivity() {
             "Vehicles"
         )
 
+        // Array of category IDs corresponding to each topic
         val categoryIds = arrayOf(
             -1, 9, 10, 11, 12, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28
         )
@@ -95,8 +97,8 @@ class QuizMeOptionsActivity : AppCompatActivity() {
             }
         }
 
+        // Set up bottom navigation to allow switching between screens (Home, Quiz, and Settings)
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.action_home -> {
@@ -122,6 +124,7 @@ class QuizMeOptionsActivity : AppCompatActivity() {
         }
     }
 
+    // Save the selected quiz preferences (number of questions, category, and switch state) to SharedPreferences
     private fun savePreferences(
         numberOfQuestions: Int,
         selectedCategoryIndex: Int,
@@ -138,6 +141,7 @@ class QuizMeOptionsActivity : AppCompatActivity() {
         editor.apply()
     }
 
+    // Load saved quiz preferences from SharedPreferences and update the UI accordingly
     private fun loadPreferences() {
         val sharedPreferences: SharedPreferences =
             getSharedPreferences("QuizPreferences", Context.MODE_PRIVATE)
@@ -162,6 +166,7 @@ class QuizMeOptionsActivity : AppCompatActivity() {
         switchQuestionType.isChecked = savedSwitchState
     }
 
+    // Update the user's press count and achievements in Fire db
     private fun updatePressCountAndAchievements() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
@@ -181,7 +186,6 @@ class QuizMeOptionsActivity : AppCompatActivity() {
                 val achievements = mutableMapOf<String, Map<String, Any>>()
                 val unlockedAchievements = mutableListOf<String>()
 
-                // Define achievements
                 achievements["First Quiz"] = mapOf(
                     "unlocked" to (newPressCount >= 1),
                     "description" to "Complete your first quiz!"

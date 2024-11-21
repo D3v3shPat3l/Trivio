@@ -16,7 +16,8 @@
         android:text="Question:"
         android:textStyle="bold"
         android:textColor="#000000"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:contentDescription="Display the question text" />
 
     <!-- User's Answer -->
     <TextView
@@ -26,7 +27,8 @@
         android:text="Your Answer:"
         android:layout_marginTop="4dp"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:contentDescription="Display the user's answer" />
 
     <!-- Correct Answer Indicator -->
     <TextView
@@ -36,7 +38,8 @@
         android:text="Correct Answer:"
         android:layout_marginTop="4dp"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:contentDescription="Display the correct answer" />
 
     <!-- Timestamp -->
     <TextView
@@ -46,5 +49,6 @@
         android:text="Date: "
         android:layout_marginTop="4dp"
         android:textColor="#707070"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:contentDescription="Display the timestamp for the response" />
 </LinearLayout>

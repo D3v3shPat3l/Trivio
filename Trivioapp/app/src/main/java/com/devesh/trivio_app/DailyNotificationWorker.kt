@@ -12,13 +12,15 @@ import androidx.work.WorkerParameters
 import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
 
+// Worker class to handle background tasks for sending daily quiz notifications
 class DailyNotificationWorker(appContext: Context, workerParams: WorkerParameters) : Worker(appContext, workerParams) {
 
+    // Method executed when the worker is run
     override fun doWork(): Result {
         if (ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.POST_NOTIFICATIONS)
             != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(applicationContext, "Permission to post notifications is not granted!", Toast.LENGTH_SHORT).show()
-            return Result.failure() // Optionally handle failure in a more graceful way
+            return Result.failure()
         }
 
         val notificationTime = inputData.getLong("notification_time", 0L)

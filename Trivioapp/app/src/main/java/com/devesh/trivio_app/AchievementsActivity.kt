@@ -9,11 +9,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
+// Activity to display the user's achievements in a RecyclerView
 class AchievementsActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var achievementAdapter: AchievementAdapter
 
+    // Called when the activity is created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -24,6 +26,7 @@ class AchievementsActivity : AppCompatActivity() {
 
         loadAchievements()
 
+        // Set up the bottom navigation bar and its item selection actions
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -44,6 +47,7 @@ class AchievementsActivity : AppCompatActivity() {
         }
     }
 
+    // Loads the user's achievements from the Fire db
     private fun loadAchievements() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
@@ -61,7 +65,6 @@ class AchievementsActivity : AppCompatActivity() {
                             unlocked = it.value["unlocked"] as Boolean
                         )
                     }
-
                     achievementAdapter = AchievementAdapter(achievementList)
                     recyclerView.adapter = achievementAdapter
                 }

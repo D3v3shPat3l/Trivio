@@ -1,5 +1,6 @@
 package com.devesh.trivio_app
 
+// Data class representing a user's response to a quiz question
 data class QuizResponse(
     val userId: String = "",
     val quizId: String = "",

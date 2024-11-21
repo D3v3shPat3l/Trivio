@@ -8,8 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.FirebaseApp
 
+// Main Activity that serves as the entry point of the app after login
 class MainActivity : AppCompatActivity() {
 
+    // Called when the activity is created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -49,6 +51,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, AchievementsActivity::class.java))
         }
 
+        // Handle bottom navigation bar clicks
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -66,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Called when the activity comes into the foreground
     override fun onResume() {
         super.onResume()
         val sharedPreferences = getSharedPreferences("SettingsPreferences", MODE_PRIVATE)

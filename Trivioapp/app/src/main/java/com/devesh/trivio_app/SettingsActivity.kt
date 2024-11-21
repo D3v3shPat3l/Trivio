@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 import java.util.concurrent.TimeUnit
 
+// Activity that manages the app's settings, including music, notifications, sound effects, and notification time
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var musicSwitch: Switch
@@ -26,6 +27,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var logoutButton: Button
     private lateinit var sharedPreferences: SharedPreferences
 
+    // onCreate is called when the activity is first created.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -59,6 +61,7 @@ class SettingsActivity : AppCompatActivity() {
             finish()
         }
 
+        // Set up bottom navigation to allow navigation between different screens
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -78,6 +81,7 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    // Load saved preferences from SharedPreferences and update UI components
     private fun loadPreferences() {
         val isMusicEnabled = sharedPreferences.getBoolean("music_enabled", false)
         val isNotificationsEnabled = sharedPreferences.getBoolean("notifications_enabled", false)
@@ -95,6 +99,7 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    // Save the current settings to SharedPreferences
     private fun savePreferences() {
         val editor = sharedPreferences.edit()
         editor.putBoolean("music_enabled", musicSwitch.isChecked)
@@ -116,6 +121,7 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    // Schedule a daily notification at the time selected by the user
     private fun scheduleDailyNotification(calendar: Calendar) {
         val notificationTime = calendar.timeInMillis
 
@@ -127,10 +133,12 @@ class SettingsActivity : AppCompatActivity() {
         WorkManager.getInstance(this).enqueue(notificationRequest)
     }
 
+    // Cancel any scheduled daily notifications
     private fun cancelDailyNotification() {
         WorkManager.getInstance(this).cancelAllWorkByTag("daily_notification")
     }
 
+    // Show a toast message to the user
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }

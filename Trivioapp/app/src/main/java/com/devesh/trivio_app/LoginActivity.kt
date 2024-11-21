@@ -9,10 +9,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
+// Activity for user login, registration, and password reset functionality
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
 
+    // Called when the activity is created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -55,6 +57,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // Function to log in a user
     private fun loginUser(email: String, password: String) {
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
@@ -77,6 +80,7 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+    // Function to register a new user
     private fun registerUser(email: String, password: String) {
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
@@ -99,6 +103,7 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+    // Function to send a password reset email
     private fun resetPassword(email: String) {
         if (email.isEmpty()) {
             Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT).show()
@@ -115,6 +120,7 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+    // Function to save the username to shared preferences
     private fun saveUsernameToPreferences(username: String?) {
         val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()

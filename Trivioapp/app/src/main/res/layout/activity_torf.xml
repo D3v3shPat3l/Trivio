@@ -16,8 +16,10 @@
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="App logo" />
 
+    <!-- Question Number -->
     <TextView
         android:id="@+id/tv_question_number"
         android:layout_width="49dp"
@@ -32,8 +34,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Current question number" />
 
+    <!-- Question -->
     <TextView
         android:id="@+id/tv_question_tf"
         android:layout_width="0dp"
@@ -48,8 +52,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Text of the current question displayed to the user" />
 
+    <!-- Button 1 -->
     <Button
         android:id="@+id/btn_true"
         android:layout_width="0dp"
@@ -62,8 +68,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_question_tf"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:contentDescription="Button to answer TRUE to the question" />
 
+    <!-- Button 2 -->
     <Button
         android:id="@+id/btn_false"
         android:layout_width="0dp"
@@ -76,8 +84,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_true"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:contentDescription="Button to answer FALSE to the question" />
 
+    <!-- Bottom View Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
@@ -89,5 +99,6 @@
         app:menu="@menu/menu"
         android:background="@android:color/black"
         app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"/>
+        app:itemTextColor="@android:color/white"
+        android:contentDescription="Bottom navigation bar for app navigation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

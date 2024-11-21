@@ -16,7 +16,8 @@
         android:text="User Name"
         android:textSize="18sp"
         android:textColor="#000000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:contentDescription="Display the user's name" />
 
     <!-- User Score -->
     <TextView
@@ -26,5 +27,6 @@
         android:text="Score: 0"
         android:layout_marginTop="4dp"
         android:textSize="16sp"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:contentDescription="Display the user's score" />
 </LinearLayout>

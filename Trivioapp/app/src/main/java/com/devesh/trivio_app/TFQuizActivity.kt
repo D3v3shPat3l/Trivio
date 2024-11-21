@@ -2,7 +2,6 @@ package com.devesh.trivio_app
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -16,6 +15,7 @@ import retrofit2.Response
 import android.text.Html
 import android.os.Build
 
+// This activity handles the True/False quiz flow, including fetching questions, scoring, and saving responses
 class TFQuizActivity : AppCompatActivity() {
 
     private var currentQuestionIndex = 0
@@ -26,6 +26,7 @@ class TFQuizActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private val currentUser = FirebaseAuth.getInstance().currentUser
 
+    // Called when the activity is created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -34,7 +35,6 @@ class TFQuizActivity : AppCompatActivity() {
         quizId = System.currentTimeMillis().toString()
         totalQuestions = intent.getIntExtra("NUMBER_OF_QUESTIONS", 0)
         val categoryId = intent.getIntExtra("CATEGORY_ID", 9)
-
         val questionText = findViewById<TextView>(R.id.tv_question_tf)
         val questionNumberText = findViewById<TextView>(R.id.tv_question_number)
         val trueButton = findViewById<Button>(R.id.btn_true)
@@ -53,6 +53,7 @@ class TFQuizActivity : AppCompatActivity() {
             checkAnswer("False", questionText, questionNumberText)
         }
 
+        // Setup the bottom navigation menu
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -73,6 +74,7 @@ class TFQuizActivity : AppCompatActivity() {
         }
     }
 
+    // Method to fetch questions from the API using Retrofit
     private fun fetchQuestionsFromApi(categoryId: Int, trueButton: Button, falseButton: Button) {
         val apiService = RetrofitClient.instance.create(ApiService::class.java)
 
@@ -84,6 +86,7 @@ class TFQuizActivity : AppCompatActivity() {
             category = categoryId
         )
 
+        // Handle the response of the API call
         call.enqueue(object : Callback<QuestionResponse> {
             override fun onResponse(call: Call<QuestionResponse>, response: Response<QuestionResponse>) {
                 if (response.isSuccessful && response.body() != null) {
@@ -103,12 +106,14 @@ class TFQuizActivity : AppCompatActivity() {
                 }
             }
 
+            // Handle failure in API call
             override fun onFailure(call: Call<QuestionResponse>, t: Throwable) {
                 Toast.makeText(this@TFQuizActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
+    // Extension function to decode HTML entities in the question text
     fun String.decodeHtml(): String {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Html.fromHtml(this, Html.FROM_HTML_MODE_LEGACY).toString()
@@ -117,6 +122,7 @@ class TFQuizActivity : AppCompatActivity() {
         }
     }
 
+    // Update the UI with the current question and question number
     private fun updateQuestionUI() {
         val questionText = findViewById<TextView>(R.id.tv_question_tf)
         val questionNumberText = findViewById<TextView>(R.id.tv_question_number)
@@ -127,6 +133,7 @@ class TFQuizActivity : AppCompatActivity() {
         }
     }
 
+    // Check the selected answer and update score
     private fun checkAnswer(selectedAnswer: String, questionText: TextView, questionNumberText: TextView) {
         if (questionList.isNotEmpty() && currentQuestionIndex < questionList.size) {
             val currentQuestion = questionList[currentQuestionIndex]
@@ -152,6 +159,7 @@ class TFQuizActivity : AppCompatActivity() {
         }
     }
 
+    // Move to the next question or show quiz summary if all questions are answered
     private fun showNextQuestion(questionText: TextView, questionNumberText: TextView) {
         currentQuestionIndex++
         if (currentQuestionIndex < totalQuestions) {
@@ -161,6 +169,7 @@ class TFQuizActivity : AppCompatActivity() {
         }
     }
 
+    // Show the final quiz summary with score and options to replay or exit
     private fun showQuizSummary() {
         val summaryDialog = QuizSummaryDialog(
             score = score,
@@ -171,6 +180,7 @@ class TFQuizActivity : AppCompatActivity() {
         summaryDialog.show(supportFragmentManager, "QuizSummaryDialog")
     }
 
+    // Restart the quiz by resetting score and question index
     private fun restartQuiz() {
         score = 0
         currentQuestionIndex = 0
@@ -184,6 +194,7 @@ class TFQuizActivity : AppCompatActivity() {
         fetchQuestionsFromApi(intent.getIntExtra("CATEGORY_ID", 9), trueButton, falseButton)
     }
 
+    // Save the user's response to Fire db
     private fun saveQuizResponse(quizId: String, questionId: String, answer: String, isCorrect: Boolean, score: Int) {
         val questionText = questionList[currentQuestionIndex].question.decodeHtml()
         val username = currentUser?.email?.substringBefore("@") ?: "Anonymous"
@@ -200,15 +211,10 @@ class TFQuizActivity : AppCompatActivity() {
         )
 
         db.collection("quizResponses").add(response)
-            .addOnSuccessListener {
-                Log.d("Firestore", "Quiz response saved successfully!")
-                updateLeaderboard(score, username)
-            }
-            .addOnFailureListener { e ->
-                Log.w("Firestore", "Error saving quiz response", e)
-            }
+        updateLeaderboard(score, username)
     }
 
+    // Update the user's score in the leaderboard
     private fun updateLeaderboard(score: Int, username: String) {
         val userRef = db.collection("leaderboard").document(currentUser?.uid ?: return)
 
@@ -217,20 +223,8 @@ class TFQuizActivity : AppCompatActivity() {
                 val currentScore = document.getLong("score")?.toInt() ?: 0
                 val newScore = currentScore + score
                 userRef.update("score", newScore, "username", username)
-                    .addOnSuccessListener {
-                        Log.d("Firestore", "Leaderboard updated successfully")
-                    }
-                    .addOnFailureListener { e ->
-                        Log.w("Firestore", "Error updating leaderboard", e)
-                    }
             } else {
                 userRef.set(hashMapOf("score" to score, "username" to username))
-                    .addOnSuccessListener {
-                        Log.d("Firestore", "New leaderboard entry created")
-                    }
-                    .addOnFailureListener { e ->
-                        Log.w("Firestore", "Error adding leaderboard entry", e)
-                    }
             }
         }
     }

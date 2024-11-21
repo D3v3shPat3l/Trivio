@@ -17,7 +17,8 @@
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="App logo image" />
 
     <!-- Quiz Customization Text -->
     <TextView
@@ -31,7 +32,8 @@
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/logo_image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="Title for customizing your quiz" />
 
     <!-- Number of Questions Label -->
     <TextView
@@ -44,7 +46,8 @@
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/tv_quiz_me"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="Label for number of questions" />
 
     <!-- Number of Questions Spinner -->
     <Spinner
@@ -58,7 +61,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_number_of_questions"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:contentDescription="Spinner for selecting number of questions" />
 
     <!-- Topic Label -->
     <TextView
@@ -71,7 +75,8 @@
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/spinner_number_of_questions"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="Label for selecting the quiz topic" />
 
     <!-- Topic Spinner -->
     <Spinner
@@ -85,7 +90,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_topic"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:contentDescription="Spinner for selecting the quiz topic" />
 
     <!-- Question Type Label -->
     <TextView
@@ -98,7 +104,8 @@
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/spinner_topic"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="Label for selecting question type" />
 
     <!-- MCQ / True or False Switch -->
     <Switch
@@ -114,7 +121,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_question_type"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:contentDescription="Switch for selecting between MCQ or True/False question type" />
 
     <!-- Start Quiz Button -->
     <Button
@@ -133,7 +141,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/switch_question_type"
         app:layout_constraintVertical_bias="0.043"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:contentDescription="Button to start the quiz" />
 
     <!-- Bottom Navigation View -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -146,5 +155,6 @@
         app:menu="@menu/menu"
         android:background="@android:color/black"
         app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"/>
+        app:itemTextColor="@android:color/white"
+        android:contentDescription="Bottom navigation bar for app navigation" />
 </androidx.constraintlayout.widget.ConstraintLayout>
