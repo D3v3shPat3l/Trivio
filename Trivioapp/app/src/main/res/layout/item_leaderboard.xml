@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#F6C1EC"
+    android:background="@color/pink"
     android:layout_marginBottom="8dp">
 
     <!-- User Name -->
@@ -13,20 +13,20 @@
         android:id="@+id/tv_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Name"
+        android:text="@string/user_name"
         android:textSize="18sp"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:contentDescription="Display the user's name" />
+        android:contentDescription="@string/display_the_user_s_name" />
 
     <!-- User Score -->
     <TextView
         android:id="@+id/tv_user_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score: 0"
+        android:text="@string/score_0"
         android:layout_marginTop="4dp"
         android:textSize="16sp"
-        android:textColor="#000000"
-        android:contentDescription="Display the user's score" />
+        android:textColor="@color/black"
+        android:contentDescription="@string/display_the_user_s_score" />
 </LinearLayout>

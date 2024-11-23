@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6C1EC"
+    android:background="@color/pink"
     tools:ignore="ExtraText">
 
     <!-- Logo Image -->
@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="App logo" />
+        android:contentDescription="@string/app_logo" />
 
     <!-- Question Number -->
     <TextView
@@ -28,14 +28,15 @@
         android:layout_marginStart="354dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="354dp"
-        android:text="x/x"
+        android:text="@string/_1_5"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Current question number" />
+        android:contentDescription="@string/current_question_number" />
 
     <!-- Question -->
     <TextView
@@ -45,15 +46,15 @@
         android:layout_marginTop="350dp"
         android:gravity="center"
         android:padding="16dp"
-        android:text="question"
-        android:textColor="#000000"
+        android:text="@string/question"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Text of the current question displayed to the user" />
+        android:contentDescription="@string/text_of_the_current_question_displayed_to_the_user" />
 
     <!-- Button 1 -->
     <Button
@@ -61,15 +62,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#6A0DAD"
-        android:text="TRUE"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/purple"
+        android:text="@string/trueb"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_question_tf"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Button to answer TRUE to the question" />
+        android:contentDescription="@string/trueb" />
 
     <!-- Button 2 -->
     <Button
@@ -77,15 +78,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:backgroundTint="#6A0DAD"
-        android:text="FALSE"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/purple"
+        android:text="@string/falseb"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_true"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Button to answer FALSE to the question" />
+        android:contentDescription="@string/falseb" />
 
     <!-- Bottom View Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -97,8 +98,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu"
-        android:background="@android:color/black"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        android:contentDescription="Bottom navigation bar for app navigation" />
+        android:background="@color/black"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:contentDescription="@string/bottom_navigation_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

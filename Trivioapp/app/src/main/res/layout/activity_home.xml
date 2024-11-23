@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6C1EC"
+    android:background="@color/pink"
     tools:context=".MainActivity">
 
     <!-- Logo Image -->
@@ -17,22 +17,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="App Logo"/>
+        android:contentDescription="@string/app_logo"/>
 
     <!-- Welcome Message -->
     <TextView
         android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome, User"
-        android:textColor="#000000"
+        android:text="@string/welcome_user"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/logo_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="-40dp"
-        android:contentDescription="Welcome message for the user" />
+        android:contentDescription="@string/welcome_message_for_the_user" />
 
     <!-- Quiz Me Button -->
     <Button
@@ -40,64 +40,64 @@
         android:layout_width="331dp"
         android:layout_height="73dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#6A0DAD"
-        android:text="QUIZ ME"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/purple"
+        android:text="@string/quiz_me"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_welcome"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Quiz Me Button" />
+        android:contentDescription="@string/quiz_me_button" />
 
     <!-- Leaderboard Button -->
     <Button
         android:id="@+id/btn_leaderboard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#0cc0df"
-        android:text="LEADERBOARD"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/teal"
+        android:text="@string/leaderboard"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/btn_quiz_me"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8"
         android:layout_marginTop="16dp"
-        android:contentDescription="Leaderboard Button" />
+        android:contentDescription="@string/leaderboard_button" />
 
     <!-- Past Responses Button -->
     <Button
         android:id="@+id/btn_past"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#0cc0df"
-        android:text="PAST RESPONSES"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/teal"
+        android:text="@string/past_responses"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/btn_leaderboard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8"
         android:layout_marginTop="16dp"
-        android:contentDescription="Past Responses Button" />
+        android:contentDescription="@string/past_responses_button" />
 
     <!-- Achievements Button -->
     <Button
         android:id="@+id/btn_achievements"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#0cc0df"
-        android:text="ACHIEVEMENTS"
+        android:backgroundTint="@color/teal"
+        android:text="@string/achievements"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/btn_past"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8"
         android:layout_marginTop="16dp"
-        android:contentDescription="Achievements Button" />
+        android:contentDescription="@string/achievements_button" />
 
     <!-- Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -106,8 +106,8 @@
         android:layout_height="60dp"
         app:menu="@menu/menu"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@android:color/black"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        android:contentDescription="Bottom Navigation Bar" />
+        android:background="@color/black"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:contentDescription="@string/bottom_navigation_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

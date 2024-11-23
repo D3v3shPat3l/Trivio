@@ -2,16 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_home"
-        android:title="Home"
-        android:icon="@drawable/ic_home" />
+        android:title="@string/home"
+        android:icon="@drawable/ic_home"
+        android:contentDescription="@string/home" />
 
     <item
         android:id="@+id/action_quiz"
-        android:title="Quiz"
-        android:icon="@drawable/ic_quiz" />
+        android:title="@string/quiz"
+        android:icon="@drawable/ic_quiz"
+        android:contentDescription="@string/quiz" />
 
     <item
         android:id="@+id/action_settings"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings" />
+        android:title="@string/settings"
+        android:icon="@drawable/ic_settings"
+        android:contentDescription="@string/settings"/>
 </menu>

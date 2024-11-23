@@ -13,34 +13,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
-        android:text="Your Score: 100"
-        android:contentDescription="Your current score displayed here" />
+        android:text="@string/your_score_0"
+        android:contentDescription="@string/your_current_score_displayed_here" />
 
     <!-- Button 1 (Play Again) -->
     <Button
         android:id="@+id/btn_play_again"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Play Again"
-        android:backgroundTint="#6A0DAD"
-        android:textColor="#FFFFFF"
+        android:text="@string/play_again"
+        android:backgroundTint="@color/purple"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_marginBottom="8dp"
-        android:contentDescription="Button to play the game again" />
+        android:contentDescription="@string/button_to_play_the_game_again" />
 
     <!-- Button 2 (Menu) -->
     <Button
         android:id="@+id/btn_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#0cc0df"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/teal"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        android:text="Menu"
-        android:contentDescription="Button to navigate to the main menu" />
+        android:text="@string/menu"
+        android:contentDescription="@string/button_to_navigate_to_the_main_menu" />
 </LinearLayout>

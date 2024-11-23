@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#F6C1EC"
+    android:background="@color/pink"
     android:layout_marginBottom="8dp">
 
     <!-- Question Text -->
@@ -13,42 +13,42 @@
         android:id="@+id/tv_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Question:"
+        android:text="@string/questionPast"
         android:textStyle="bold"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="16sp"
-        android:contentDescription="Display the question text" />
+        android:contentDescription="@string/display_the_question_text" />
 
     <!-- User's Answer -->
     <TextView
         android:id="@+id/tv_user_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Answer:"
+        android:text="@string/your_answer"
         android:layout_marginTop="4dp"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="14sp"
-        android:contentDescription="Display the user's answer" />
+        android:contentDescription="@string/display_the_user_s_answer" />
 
     <!-- Correct Answer Indicator -->
     <TextView
         android:id="@+id/tv_correct_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Correct Answer:"
+        android:text="@string/correct_answer"
         android:layout_marginTop="4dp"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="14sp"
-        android:contentDescription="Display the correct answer" />
+        android:contentDescription="@string/display_the_correct_answer" />
 
     <!-- Timestamp -->
     <TextView
         android:id="@+id/tv_response_timestamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date: "
+        android:text="@string/date"
         android:layout_marginTop="4dp"
-        android:textColor="#707070"
+        android:textColor="@color/black"
         android:textSize="12sp"
-        android:contentDescription="Display the timestamp for the response" />
+        android:contentDescription="@string/display_the_timestamp_for_the_response" />
 </LinearLayout>

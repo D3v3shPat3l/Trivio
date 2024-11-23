@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6C1EC"
+    android:background="@color/pink"
     tools:ignore="ExtraText">
 
     <!-- Logo Image -->
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="App logo" />
+        android:contentDescription="@string/app_logo" />
 
     <!-- Question Number -->
     <TextView
@@ -28,14 +28,15 @@
         android:layout_marginStart="354dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="354dp"
-        android:text="x/x"
+        android:text="@string/_1_5"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Current question number" />
+        android:contentDescription="@string/current_question_number" />
 
     <!-- Question -->
     <TextView
@@ -44,8 +45,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
-        android:text="question"
-        android:textColor="#000000"
+        android:text="@string/question"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,71 +54,71 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="350dp"
-        android:contentDescription="Multiple choice question text" />
+        android:contentDescription="@string/multiple_choice_question_text" />
 
     <!-- Button 1 -->
     <Button
         android:id="@+id/btn_option_1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#6A0DAD"
-        android:text="Option 1"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/purple"
+        android:text="@string/option_1"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_question_mcq"
         android:layout_marginTop="16dp"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Option 1 button for the question" />
+        android:contentDescription="@string/option_1_button_for_the_question" />
 
     <!-- Button 2 -->
     <Button
         android:id="@+id/btn_option_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#6A0DAD"
-        android:text="Option 2"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/purple"
+        android:text="@string/option_2"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_option_1"
         android:layout_marginTop="4dp"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Option 2 button for the question" />
+        android:contentDescription="@string/option_2_button_for_the_question" />
 
     <!-- Button 3 -->
     <Button
         android:id="@+id/btn_option_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#6A0DAD"
-        android:text="Option 3"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/purple"
+        android:text="@string/option_3"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_option_2"
         android:layout_marginTop="4dp"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Option 3 button for the question" />
+        android:contentDescription="@string/option_3_button_for_the_question" />
 
     <!-- Button 4 -->
     <Button
         android:id="@+id/btn_option_4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#6A0DAD"
-        android:text="Option 4"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/purple"
+        android:text="@string/option_4"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_option_3"
         android:layout_marginTop="4dp"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Option 4 button for the question" />
+        android:contentDescription="@string/option_4_button_for_the_question" />
 
     <!-- Bottom View Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -129,8 +130,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu"
-        android:background="@android:color/black"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        android:contentDescription="Bottom navigation bar for app navigation" />
+        android:background="@color/black"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:contentDescription="@string/bottom_navigation_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

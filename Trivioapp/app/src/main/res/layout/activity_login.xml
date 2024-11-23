@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6C1EC">
+    android:background="@color/pink">
 
     <!-- Logo Image -->
     <ImageView
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="App Logo" />
+        android:contentDescription="@string/app_logo" />
 
     <!-- Email Input Field -->
     <EditText
@@ -24,12 +24,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="-40dp"
-        android:backgroundTint="#000000"
-        android:hint="Email"
+        android:backgroundTint="@color/black"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:textColor="#000000"
-        android:textColorHint="#7D7D7D"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo_image"
@@ -41,12 +41,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#000000"
-        android:hint="Password"
+        android:backgroundTint="@color/black"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:textColor="#000000"
-        android:textColorHint="#7D7D7D"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_email"
@@ -58,16 +58,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="LOGIN"
-        android:textColor="#FFFFFF"
+        android:text="@string/login"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:backgroundTint="#6A0DAD"
+        android:backgroundTint="@color/purple"
         app:layout_constraintTop_toBottomOf="@+id/et_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Login button" />
+        android:contentDescription="@string/login_button" />
 
     <!-- Sign Up Button -->
     <Button
@@ -75,16 +75,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="SIGN UP"
-        android:textColor="#FFFFFF"
+        android:text="@string/sign_up"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:backgroundTint="#0cc0df"
+        android:backgroundTint="@color/teal"
         app:layout_constraintTop_toBottomOf="@+id/btn_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Sign up button" />
+        android:contentDescription="@string/sign_up_button" />
 
     <!-- Forgot Password Text -->
     <TextView
@@ -92,11 +92,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Forgot Password?"
-        android:textColor="#6A0DAD"
+        android:text="@string/forgot_password"
+        android:textColor="@color/purple"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/btn_signup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="Forgot password link" />
+        android:contentDescription="@string/forgot_password_link" />
 </androidx.constraintlayout.widget.ConstraintLayout>

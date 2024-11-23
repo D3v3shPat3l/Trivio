@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6C1EC"
+    android:background="@color/pink"
     android:fitsSystemWindows="true">
 
     <!-- Logo Image -->
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="App logo image" />
+        android:contentDescription="@string/app_logo" />
 
     <!-- Quiz Customization Text -->
     <TextView
@@ -26,14 +26,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-40dp"
-        android:text="Customize Your Quiz"
-        android:textColor="#000000"
+        android:text="@string/customize_your_quiz"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/logo_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="Title for customizing your quiz" />
+        android:contentDescription="@string/title_for_customizing_your_quiz" />
 
     <!-- Number of Questions Label -->
     <TextView
@@ -41,13 +41,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Number of Questions:"
-        android:textColor="#000000"
+        android:text="@string/number_of_questions"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/tv_quiz_me"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="Label for number of questions" />
+        android:contentDescription="@string/label_for_number_of_questions" />
 
     <!-- Number of Questions Spinner -->
     <Spinner
@@ -55,14 +55,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/white"
         android:minHeight="48dp"
         android:entries="@array/number_of_questions_array"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_number_of_questions"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Spinner for selecting number of questions" />
+        android:contentDescription="@string/spinner_for_selecting_number_of_questions" />
 
     <!-- Topic Label -->
     <TextView
@@ -70,13 +70,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Choose Topic:"
-        android:textColor="#000000"
+        android:text="@string/choose_topic"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/spinner_number_of_questions"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="Label for selecting the quiz topic" />
+        android:contentDescription="@string/label_for_selecting_the_quiz_topic" />
 
     <!-- Topic Spinner -->
     <Spinner
@@ -84,14 +84,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/white"
         android:minHeight="48dp"
         android:entries="@array/topics_array"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_topic"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Spinner for selecting the quiz topic" />
+        android:contentDescription="@string/spinner_for_selecting_the_quiz_topic" />
 
     <!-- Question Type Label -->
     <TextView
@@ -99,13 +99,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Question Type:"
-        android:textColor="#000000"
+        android:text="@string/question_type"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/spinner_topic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="Label for selecting question type" />
+        android:contentDescription="@string/label_for_selecting_question_type" />
 
     <!-- MCQ / True or False Switch -->
     <Switch
@@ -114,15 +114,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:minHeight="48dp"
-        android:text="MCQ / TF"
-        android:textColor="#000000"
-        android:thumbTint="#FFFFFF"
-        android:trackTint="#6A0DAD"
+        android:text="@string/mcq_tf"
+        android:textColor="@color/black"
+        android:thumbTint="@color/white"
+        android:trackTint="@color/purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_question_type"
         tools:ignore="UseSwitchCompatOrMaterialXml"
-        android:contentDescription="Switch for selecting between MCQ or True/False question type" />
+        android:contentDescription="@string/switch_for_selecting_between_mcq_or_true_false_question_type" />
 
     <!-- Start Quiz Button -->
     <Button
@@ -131,9 +131,9 @@
         android:layout_height="73dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#6A0DAD"
-        android:text="START QUIZ"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/purple"
+        android:text="@string/start_quiz"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
@@ -142,7 +142,7 @@
         app:layout_constraintTop_toBottomOf="@id/switch_question_type"
         app:layout_constraintVertical_bias="0.043"
         app:layout_constraintWidth_percent="0.8"
-        android:contentDescription="Button to start the quiz" />
+        android:contentDescription="@string/button_to_start_the_quiz" />
 
     <!-- Bottom Navigation View -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -153,8 +153,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/menu"
-        android:background="@android:color/black"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        android:contentDescription="Bottom navigation bar for app navigation" />
+        android:background="@color/black"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:contentDescription="@string/bottom_navigation_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

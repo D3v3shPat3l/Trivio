@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="16dp"
-    android:background="#F6C1EC"
+    android:background="@color/pink"
     android:layout_marginBottom="8dp">
 
     <!-- Icon -->
@@ -14,7 +14,7 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:src="@drawable/app_logo"
-        android:contentDescription="Icon representing the achievement" />
+        android:contentDescription="@string/icon_representing_the_achievement" />
 
     <!-- Text Section -->
     <LinearLayout
@@ -28,32 +28,32 @@
             android:id="@+id/tv_achievement_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Achievement Name"
+            android:text="@string/achievement_name"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#000000"
-            android:contentDescription="The name of the achievement" />
+            android:textColor="@color/black"
+            android:contentDescription="@string/the_name_of_the_achievement" />
 
         <!-- Achievement Description -->
         <TextView
             android:id="@+id/tv_achievement_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Achievement Description"
+            android:text="@string/achievement_description"
             android:textSize="14sp"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:layout_marginTop="4dp"
-            android:contentDescription="Description of the achievement" />
+            android:contentDescription="@string/description_of_the_achievement" />
 
         <!-- Achievement Status -->
         <TextView
             android:id="@+id/tv_achievement_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status"
+            android:text="@string/status"
             android:textSize="16sp"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:layout_marginTop="8dp"
-            android:contentDescription="The current status of the achievement" />
+            android:contentDescription="@string/the_current_status_of_the_achievement" />
     </LinearLayout>
 </LinearLayout>

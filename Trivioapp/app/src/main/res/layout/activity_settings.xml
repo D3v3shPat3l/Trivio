@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6C1EC">
+    android:background="@color/pink">
 
     <ScrollView
         android:id="@+id/settings_scroll_view"
@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="Scrollable settings page for configuring notifications, music, and sound effects">
+        android:contentDescription="@string/scrollable_settings_page_for_configuring_notifications_music_and_sound_effects">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,10 +27,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Notification Time"
-                android:textColor="#000000"
+                android:text="@string/notification_time"
+                android:textColor="@color/black"
                 android:textSize="18sp"
-                android:contentDescription="Label for setting the notification time" />
+                android:contentDescription="@string/label_for_setting_the_notification_time" />
 
             <TimePicker
                 android:id="@+id/timePicker"
@@ -38,17 +38,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:timePickerMode="spinner"
-                android:contentDescription="Time picker for selecting the notification time" />
+                android:contentDescription="@string/time_picker_for_selecting_the_notification_time" />
 
             <!-- Notification Switch -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Notifications"
-                android:textColor="#000000"
+                android:text="@string/notifications"
+                android:textColor="@color/black"
                 android:textSize="18sp"
-                android:contentDescription="Label for enabling or disabling notifications" />
+                android:contentDescription="@string/label_for_enabling_or_disabling_notifications" />
 
             <Switch
                 android:id="@+id/switch_notifications"
@@ -56,21 +56,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:minHeight="48dp"
-                android:text="Enable Notifications"
-                android:textColor="#000000"
-                android:thumbTint="#FFFFFF"
-                android:trackTint="#6A0DAD"
-                android:contentDescription="Switch to enable or disable notifications" />
+                android:text="@string/enable_notifications"
+                android:textColor="@color/black"
+                android:thumbTint="@color/white"
+                android:trackTint="@color/purple"
+                android:contentDescription="@string/switch_to_enable_or_disable_notifications" />
 
             <!-- Background Music Switch -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Background Music"
-                android:textColor="#000000"
+                android:text="@string/background_music"
+                android:textColor="@color/black"
                 android:textSize="18sp"
-                android:contentDescription="Label for enabling or disabling background music" />
+                android:contentDescription="@string/label_for_enabling_or_disabling_background_music" />
 
             <Switch
                 android:id="@+id/switch_music"
@@ -78,21 +78,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:minHeight="48dp"
-                android:text="Enable Music"
-                android:textColor="#000000"
-                android:thumbTint="#FFFFFF"
-                android:trackTint="#6A0DAD"
-                android:contentDescription="Switch to enable or disable background music" />
+                android:text="@string/enable_music"
+                android:textColor="@color/black"
+                android:thumbTint="@color/white"
+                android:trackTint="@color/purple"
+                android:contentDescription="@string/switch_to_enable_or_disable_background_music" />
 
             <!-- Sound Effects Switch -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Sound Effects"
-                android:textColor="#000000"
+                android:text="@string/sound_effects"
+                android:textColor="@color/black"
                 android:textSize="18sp"
-                android:contentDescription="Label for enabling or disabling sound effects" />
+                android:contentDescription="@string/label_for_enabling_or_disabling_sound_effects" />
 
             <Switch
                 android:id="@+id/switch_sound_effects"
@@ -100,11 +100,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:minHeight="48dp"
-                android:text="Enable Sound Effects"
-                android:textColor="#000000"
-                android:thumbTint="#FFFFFF"
-                android:trackTint="#6A0DAD"
-                android:contentDescription="Switch to enable or disable sound effects" />
+                android:text="@string/enable_sound_effects"
+                android:textColor="@color/black"
+                android:thumbTint="@color/white"
+                android:trackTint="@color/purple"
+                android:contentDescription="@string/switch_to_enable_or_disable_sound_effects" />
 
             <!-- Action Buttons -->
             <LinearLayout
@@ -120,11 +120,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#6A0DAD"
+                    android:backgroundTint="@color/purple"
                     android:textStyle="bold"
-                    android:text="Save"
-                    android:textColor="#FFFFFF"
-                    android:contentDescription="Button to save settings" />
+                    android:text="@string/save"
+                    android:textColor="@color/white"
+                    android:contentDescription="@string/button_to_save_settings" />
 
                 <Button
                     android:id="@+id/btn_cancel"
@@ -132,11 +132,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#0cc0df"
+                    android:backgroundTint="@color/teal"
                     android:textStyle="bold"
-                    android:text="Cancel"
-                    android:textColor="#FFFFFF"
-                    android:contentDescription="Button to cancel settings changes" />
+                    android:text="@string/cancel"
+                    android:textColor="@color/white"
+                    android:contentDescription="@string/button_to_cancel_settings_changes" />
             </LinearLayout>
 
             <!-- Logout Button -->
@@ -146,10 +146,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:textStyle="bold"
-                android:backgroundTint="#FF0000"
-                android:text="Logout"
-                android:textColor="#FFFFFF"
-                android:contentDescription="Button to log out of the app" />
+                android:backgroundTint="@color/red"
+                android:text="@string/logout"
+                android:textColor="@color/white"
+                android:contentDescription="@string/button_to_log_out_of_the_app" />
 
         </LinearLayout>
     </ScrollView>
@@ -163,8 +163,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu"
-        android:background="@android:color/black"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        android:contentDescription="Bottom navigation bar for app navigation" />
+        android:background="@color/black"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:contentDescription="@string/bottom_navigation_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
